@@ -19,7 +19,16 @@ type Todo struct {
 
 type Todos []Todo
 
-func (todos *Todos) add(title string) {
+func (todos *Todos) validateIdx(idx int) error {
+	if idx < 0 || idx >= len(*todos) {
+		err := errors.New("invalid index")
+		fmt.Println(err)
+		return err
+	}
+	return nil
+}
+
+func (todos *Todos) Add(title string) {
 	newTodo := Todo{
 		Title:       title,
 		Completed:   false,
@@ -29,16 +38,7 @@ func (todos *Todos) add(title string) {
 	*todos = append(*todos, newTodo)
 }
 
-func (todos *Todos) validateIdx(idx int) error {
-	if idx < 0 || idx >= len(*todos) {
-		err := errors.New("Invalid index!")
-		fmt.Println(err)
-		return err
-	}
-	return nil
-}
-
-func (todos *Todos) delete(idx int) error {
+func (todos *Todos) Delete(idx int) error {
 	t := *todos
 
 	if err := t.validateIdx(idx); err != nil {
@@ -49,7 +49,7 @@ func (todos *Todos) delete(idx int) error {
 	return nil
 }
 
-func (todos *Todos) toggle(idx int) error {
+func (todos *Todos) Toggle(idx int) error {
 	t := *todos
 
 	if err := t.validateIdx(idx); err != nil {
@@ -65,7 +65,7 @@ func (todos *Todos) toggle(idx int) error {
 	return nil
 }
 
-func (todos *Todos) edit(idx int, title string) error {
+func (todos *Todos) Edit(idx int, title string) error {
 	t := *todos
 	if err := t.validateIdx(idx); err != nil {
 		return err
@@ -74,7 +74,7 @@ func (todos *Todos) edit(idx int, title string) error {
 	return nil
 }
 
-func (todo *Todos) print() {
+func (todo *Todos) Print() {
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader([]string{"#", "title", "completed", "created at", "completed at"})
 	for i, t := range *todo {
