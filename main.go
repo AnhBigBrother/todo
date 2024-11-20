@@ -1,13 +1,11 @@
+/*
+Copyright © 2024 NAME HERE <EMAIL ADDRESS>
+
+*/
 package main
 
+import "github.com/AnhBigBrother/todo/cmd"
+
 func main() {
-	todos := Todos{}
-
-	store := NewStorage[Todos]("data.json")
-	store.Load(&todos)
-
-	cmdFlag := NewCommandFlag()
-	cmdFlag.Execute(&todos)
-
-	store.Save(todos)
+	cmd.Execute()
 }
