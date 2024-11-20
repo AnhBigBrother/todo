@@ -1,7 +1,7 @@
 /*
-Copyright © 2024 NAME HERE <EMAIL ADDRESS>
-
+Copyright © 2024 big_bro <anh.bigbrother@gmail.com>
 */
+
 package main
 
 import "github.com/AnhBigBrother/todo/cmd"
