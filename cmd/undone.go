@@ -12,6 +12,7 @@ var undoneCmd = &cobra.Command{
 		for _, idxStr := range args {
 			todos.Undone(idxStr)
 		}
+		todos.PrintAll()
 	},
 }
 

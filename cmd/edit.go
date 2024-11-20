@@ -22,6 +22,7 @@ var editCmd = &cobra.Command{
 
 			todos.Edit(parts[0], parts[1])
 		}
+		todos.PrintAll()
 	},
 }
 

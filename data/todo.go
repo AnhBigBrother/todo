@@ -97,6 +97,7 @@ func (todos *Todos) Edit(idxStr string, title string) error {
 func (todo *Todos) PrintAll() {
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader([]string{"#", "title", "completed", "created at", "completed at"})
+	count := 0
 	for i, t := range *todo {
 		completed := "❌"
 		completedAt := ""
@@ -107,33 +108,44 @@ func (todo *Todos) PrintAll() {
 		}
 		row := []string{strconv.Itoa(i), t.Title, completed, t.CreatedAt.Format(time.RFC1123), completedAt}
 		table.Append(row)
+		count++
 	}
+	table.SetFooter([]string{"", "", "", "Count", strconv.Itoa(count)})
+	table.SetBorder(false)
 	table.Render()
 }
 
 func (todo *Todos) PrintCompleted() {
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader([]string{"#", "title", "completed", "created at", "completed at"})
+	count := 0
 	for i, t := range *todo {
 		if t.Completed {
 			completed := "✔️"
 			completedAt := t.CompletedAt.Format(time.RFC1123)
 			row := []string{strconv.Itoa(i), t.Title, completed, t.CreatedAt.Format(time.RFC1123), completedAt}
 			table.Append(row)
+			count++
 		}
 	}
+	table.SetFooter([]string{"", "", "", "Count", strconv.Itoa(count)})
+	table.SetBorder(false)
 	table.Render()
 }
 
 func (todo *Todos) PrintUnCompleted() {
 	table := tablewriter.NewWriter(os.Stdout)
 	table.SetHeader([]string{"#", "title", "completed", "created at", "completed at"})
+	count := 0
 	for i, t := range *todo {
 		if !t.Completed {
 			completed := "❌"
 			row := []string{strconv.Itoa(i), t.Title, completed, t.CreatedAt.Format(time.RFC1123), ""}
 			table.Append(row)
+			count++
 		}
 	}
+	table.SetFooter([]string{"", "", "", "Count", strconv.Itoa(count)})
+	table.SetBorder(false)
 	table.Render()
 }

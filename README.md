@@ -28,9 +28,9 @@ go install
 
 - ```add```: Add new todo
 - ```del```: Delete a todo by it's index
-- ```done```: Mark a todo as done
-- ```undone```: Unmark a todo as done
-- ```edit```: Edit a todo by it's index
+- ```done```: Mark todos as done
+- ```undone```: Unmark todos as done
+- ```edit```: Edit todos by it's index
 - ```list```: list all todos
 - ```help```: Help about any command
 

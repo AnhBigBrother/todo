@@ -1,6 +1,8 @@
 package cmd
 
 import (
+	"fmt"
+
 	"github.com/spf13/cobra"
 )
 
@@ -9,9 +11,9 @@ var delCmd = &cobra.Command{
 	Short: "Delete a todo by it's index",
 	Long:  "Delete a todo by it's index, ex: todo del <idx>",
 	Run: func(cmd *cobra.Command, args []string) {
-		for _, idx := range args {
-			todos.Delete(idx)
-		}
+		todos.Delete(args[0])
+		todos.PrintAll()
+		fmt.Println("Deleted task at index", args[0])
 	},
 }
 

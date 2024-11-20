@@ -12,6 +12,7 @@ var addCmd = &cobra.Command{
 		for _, todo := range args {
 			todos.Add(todo)
 		}
+		todos.PrintAll()
 	},
 }
 

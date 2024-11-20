@@ -12,6 +12,7 @@ var doneCmd = &cobra.Command{
 		for _, idxStr := range args {
 			todos.Done(idxStr)
 		}
+		todos.PrintAll()
 	},
 }
 
