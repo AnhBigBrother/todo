@@ -10,8 +10,8 @@ import (
 
 var editCmd = &cobra.Command{
 	Use:   "edit",
-	Short: "Edit a todo by it's index",
-	Long:  "Edit a todo by it's index, ex: todo edit <id>:<new_title>",
+	Short: "Edit todos by their index",
+	Long:  "Edit todos by their index (allow multiple), ex: todo edit <id1>:<new_title1> <id2>:<new_title2>",
 	Run: func(cmd *cobra.Command, args []string) {
 		for _, str := range args {
 			parts := strings.Split(str, ":")

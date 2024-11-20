@@ -26,12 +26,12 @@ go install
 
 **Available Commands:**
 
-- ```add```: Add new todo
+- ```add```: Add new todos
 - ```del```: Delete a todo by it's index
 - ```done```: Mark todos as done
 - ```undone```: Unmark todos as done
-- ```edit```: Edit todos by it's index
-- ```list```: list all todos
+- ```edit```: Edit todos by their index
+- ```list```: List all todos
 - ```help```: Help about any command
 
 **Flags:**

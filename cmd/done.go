@@ -6,8 +6,8 @@ import (
 
 var doneCmd = &cobra.Command{
 	Use:   "done",
-	Short: "Mark a todo as done",
-	Long:  "Mark a todo as done by it's index, ex: todo done <idx>",
+	Short: "Mark todos as done",
+	Long:  "Mark todos as done by their index (allow multiple), ex: todo done <idx1> <idx2>",
 	Run: func(cmd *cobra.Command, args []string) {
 		for _, idxStr := range args {
 			todos.Done(idxStr)

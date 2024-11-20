@@ -6,8 +6,8 @@ import (
 
 var undoneCmd = &cobra.Command{
 	Use:   "undone",
-	Short: "unmark a todo as done",
-	Long:  "unmark a todo as done by it's index, ex todo undone <id>",
+	Short: "unmark todos as done",
+	Long:  "unmark todos as done by their index (allow multiple), ex: todo undone <id1> <id2>",
 	Run: func(cmd *cobra.Command, args []string) {
 		for _, idxStr := range args {
 			todos.Undone(idxStr)

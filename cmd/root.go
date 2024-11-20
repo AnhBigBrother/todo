@@ -5,6 +5,7 @@ Copyright © 2024 big_bro <anh.bigbrother@gmail.com>
 package cmd
 
 import (
+	"fmt"
 	"os"
 
 	"github.com/spf13/cobra"
@@ -13,7 +14,7 @@ import (
 )
 
 var todos = data.Todos{}
-var store = data.NewStorage[data.Todos]("data.json")
+var store = data.NewStorage[data.Todos]("/home/bigbro/todo_data.json")
 
 // rootCmd represents the base command when called without any subcommands
 var rootCmd = &cobra.Command{
@@ -30,7 +31,10 @@ func Execute() {
 	if err != nil {
 		os.Exit(1)
 	}
-	defer store.Save(todos)
+	err = store.Save(todos)
+	if err != nil {
+		fmt.Println(err)
+	}
 }
 
 func init() {
