@@ -12,12 +12,7 @@ Simple, easy to use todo-list cli
 **Install:**
 
 ```bash
-# Clone the repository
-git clone [repository-url]
-cd todo
-
-# Install
-go install
+go install github.com/AnhBigBrother/todo
 ```
 
 ## Usage
