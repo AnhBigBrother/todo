@@ -131,8 +131,7 @@ func (todo *Todos) PrintUnCompleted() {
 	for i, t := range *todo {
 		if !t.Completed {
 			completed := "❌"
-			completedAt := t.CompletedAt.Format(time.RFC1123)
-			row := []string{strconv.Itoa(i), t.Title, completed, t.CreatedAt.Format(time.RFC1123), completedAt}
+			row := []string{strconv.Itoa(i), t.Title, completed, t.CreatedAt.Format(time.RFC1123), ""}
 			table.Append(row)
 		}
 	}
