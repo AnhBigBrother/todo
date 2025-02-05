@@ -13,20 +13,24 @@ import (
 	"github.com/AnhBigBrother/todo/data"
 )
 
-var todos = data.Todos{}
-var store = data.NewStorage[data.Todos]("/home/bigbro/todo_data.json")
-
-// rootCmd represents the base command when called without any subcommands
-var rootCmd = &cobra.Command{
-	Use:   "todo",
-	Short: "todo-list cli",
-	Long:  "simple, easy to use todo-list cli",
-	// Uncomment the following line if your bare application
-	// has an action associated with it:
-	// Run: func(cmd *cobra.Command, args []string) { },
-}
+var (
+	todos   data.Todos
+	store   *data.Storage[data.Todos]
+	rootCmd *cobra.Command
+)
 
 func Execute() {
+	todos = data.Todos{}
+
+	homeDir, _ := os.UserHomeDir()
+	store = data.NewStorage[data.Todos](fmt.Sprintf("%s/todo_data.json", homeDir))
+
+	rootCmd = &cobra.Command{
+		Use:   "todo",
+		Short: "todo-list cli",
+		Long:  "simple todo-list cli app",
+	}
+
 	err := rootCmd.Execute()
 	if err != nil {
 		os.Exit(1)
